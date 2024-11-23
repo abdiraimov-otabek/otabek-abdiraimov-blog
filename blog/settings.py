@@ -29,7 +29,7 @@ DEBUG = True
 
 SECURE_SSL_REDIRECT = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [".vercel.app"]
 
 X_FRAME_OPTIONS = "DENY"
 

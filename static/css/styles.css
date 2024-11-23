@@ -1,0 +1,37 @@
+body {
+    background: #292C33
+}
+
+.post-title {
+    color: #F2ABC3;
+    font-size: 32px;
+    line-height: 32px;
+}
+
+.markdown h1,
+.markdown h2,
+.markdown h3 {
+    font-size: 1.5rem; /* Equivalent to text-2xl */
+    font-weight: bold; /* Equivalent to font-bold */
+    color: white; /* Equivalent to text-white */
+}
+
+.markdown p {
+    font-size: 1.125rem; /* Equivalent to text-lg */
+    color: white; /* Equivalent to text-white */
+}
+
+.markdown ul {
+    list-style-type: disc; /* Equivalent to list-disc */
+    margin-left: 1.5rem; /* Equivalent to ml-6 */
+    color: white; /* Equivalent to text-white */
+}
+
+.markdown a {
+    color: #3b82f6; /* Equivalent to text-blue-500 */
+    text-decoration: none; /* Optional: Removes underline from links */
+}
+
+.markdown a:hover {
+    text-decoration: underline; /* Optional: Adds underline on hover */
+}

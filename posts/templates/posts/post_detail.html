@@ -1,0 +1,21 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ post.title }}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body class="flex justify-center flex-col mt-10 items-center">
+<div class="w-[672px]">
+    <h1 class="post-title">{{ post.title }}</h1>
+    <p class="my-5 text-lg text-white"><strong>Author:</strong> {{ post.author.get_full_name }}</p></p>
+    <div class="text-white markdown">
+        {{ post.content|convert_markdown|safe }}
+    </div>
+</div>
+</body>
+</html>

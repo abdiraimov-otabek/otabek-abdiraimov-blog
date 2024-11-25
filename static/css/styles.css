@@ -1,11 +1,8 @@
-body {
-    background: #292C33
-}
 
-.post-title {
-    color: #F2ABC3;
-    font-size: 32px;
-    line-height: 32px;
+
+body {
+    background: #292C33;
+    font-family: 'Consolas', 'Menlo', 'Monaco', 'Courier New', Courier, monospace;
 }
 
 .markdown h1,
@@ -34,4 +31,19 @@ body {
 
 .markdown a:hover {
     text-decoration: underline; /* Optional: Adds underline on hover */
+}
+
+@media only screen and (max-width: 800px) {
+    .markdown h1, h2, h3 {
+        font-size: 1.25rem !important;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .markdown h1, h2, h3 {
+        font-size: 1rem !important;
+    }
+    .markdown p {
+        font-size: 0.9rem !important;
+    }
 }

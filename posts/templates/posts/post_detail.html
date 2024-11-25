@@ -1,4 +1,5 @@
 {% load static %}
+{% load tz %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,13 +10,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body class="flex justify-center flex-col mt-10 items-center">
-<div class="w-[672px]">
-    <h1 class="post-title">{{ post.title }}</h1>
-    <p class="my-5 text-lg text-white"><strong>Author:</strong> {{ post.author.get_full_name }}</p></p>
-    <div class="text-white markdown">
+<body class="relative flex justify-center flex-col mt-10 items-center">
+<div class="w-[300px] sm:w-[672px] mb-10">
+    <h1 class="text-2xl md:text-4xl text-white mb-6">
+        <a href="/">Otabek Abdiraimovning Blogi</a>
+    </h1>
+    <h1 class="text-[#F2ABC3] text-[17px] md:text-[27px] leading-[20px] md:leading-[32px]">{{ post.title }}</h1>
+    <p class="my-5 text-sm md:text-lg text-white"><strong>Author:</strong> {{ post.author.get_full_name }}</p></p>
+    <div class="text-white markdown mb-10">
         {{ post.content|convert_markdown|safe }}
     </div>
 </div>
+<footer class="absolute -z-50 bottom-0 text-white w-full border-t-2 py-2 text-center">
+    <p>&copy; {% now "Y" %} Otabek Abdiraimov. Barcha huquqlar himoyalangan.</p>
+</footer>
 </body>
 </html>

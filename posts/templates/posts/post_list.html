@@ -1,5 +1,7 @@
 {% load markdown_processing %}
 {% load static %}
+{% load tz %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,18 +11,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
-<body class="flex justify-center mt-10">
-    <div class="w-[672px]">
-        <h1 class="text-5xl text-white mb-6">Otabek Abdiraimov's Blog</h1>
+<body>
+<div class="flex justify-center mt-10">
+    <div class="w-[300px] md:w-[672px]">
+        <h1 class="text-2xl md:text-4xl text-white mb-6">
+            <a href="/">Otabek Abdiraimov's Blog</a>
+        </h1>
         <div class="flex items-center gap-2 mb-10">
-            <img class="size-14 object-cover rounded-full" src="{% static 'images/profile_pic.jpg' %}" alt="Profile Pic">
-            <h1 class="text-lg text-white">Personal blog by <a href="https://t.me/otabek_abdiraimov" class="text-[#F2ABC3] hover:underline">Otabek Abdiraimov</a>. I explain tech
+            <img class="size-14 object-cover rounded-full" src="{% static 'images/profile_pic.jpg' %}"
+                 alt="Profile Pic">
+            <h1 class="text-sm md:text-lg text-white">Personal blog by <a href="https://t.me/otabek_abdiraimov"
+                                                                          class="text-[#F2ABC3] hover:underline">Otabek
+                Abdiraimov</a>. I explain tech
                 <br> stuff and share my thoughts.</h1>
         </div>
         <ul class="space-y-4">
             {% for post in posts %}
                 <li class="mb-10">
-                    <a class="post-title" href="{% url 'post_detail' post.slug %}">
+                    <a class="text-[#F2ABC3] text-[17px] md:text-[27px] leading-[20px] md:leading-[32px]"
+                       href="{% url 'post_detail' post.slug %}">
                         {{ post.title }}
                     </a>
                     <p class="text-[#67E8F9] text-sm">{{ post.created_at }}</p>
@@ -31,5 +40,9 @@
             {% endfor %}
         </ul>
     </div>
+</div>
+<footer class="absolute bottom-0 text-white w-full border-t-2 py-2 text-center">
+    <p>&copy; {% now "Y" %} Otabek Abdiraimov. Barcha huquqlar himoyalangan.</p>
+</footer>
 </body>
 </html>

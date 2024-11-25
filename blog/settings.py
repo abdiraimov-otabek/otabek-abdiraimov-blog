@@ -3,6 +3,7 @@ from pathlib import Path
 
 import dj_database_url
 import environ
+import django.forms
 
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -1,9 +1,11 @@
 import os
 from pathlib import Path
+from urllib.parse import urlparse
 
 import dj_database_url
-import environ
 import django.forms
+import environ
+from dotenv import load_dotenv
 
 # Base Directory
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -74,11 +76,21 @@ TEMPLATES = [
 # WSGI application
 WSGI_APPLICATION = "blog.wsgi.application"
 
-DB_PASSWORD = env("DB_PASSWORD")
-DATABASE_URL = env("DATABASE_URL")
 # Database Configuration
 
-DATABASES = {"default": dj_database_url.config(default=DATABASE_URL, conn_max_age=600)}
+tmpPostgres = urlparse(os.getenv("DATABASE_URL"))
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": tmpPostgres.path.replace("/", ""),
+        "USER": tmpPostgres.username,
+        "PASSWORD": tmpPostgres.password,
+        "HOST": tmpPostgres.hostname,
+        "PORT": 5432,
+    }
+}
+
 
 # Authentication
 AUTH_PASSWORD_VALIDATORS = [
@@ -98,7 +110,7 @@ USE_TZ = True
 
 # Static and Media Files
 STATIC_URL = "/static/"
-STATIC_ROOT = BASE_DIR / "staticfiles"  # Location for collected static files
+STATIC_ROOT = BASE_DIR / "static"  # Location for collected static files
 MEDIA_URL = "/assets/"
 MEDIA_ROOT = BASE_DIR / "assets"
 
@@ -124,3 +136,5 @@ LOGGING = {
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+SITE_ID = 1
